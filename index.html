@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrowverse – Ordem Cronológica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .episode {
+      background: #5606f8;
+      margin-bottom: 8px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .episode.next {
+      outline: 3px solid #00ff99;
+    }
+    .episode label {
+      background: #f00404;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .episode { font-size: 16px; }
+      input[type="checkbox"] { transform: scale(1.3); }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Arrowverse 📺 Ordem Cronológica</h1>
+<p>Marque os episódios já assistidos. O próximo episódio na cronologia será destacado automaticamente.</p>
+
+<div id="list"></div>
+
+<script>
+// Ordem cronológica simplificada baseada no Poltrona Nerd
+// (sem Black Lightning, Batwoman e Superman & Lois)
+const order = [
+  "Arrow S01",
+  "Arrow S02",
+  "The Flash S01",
+  "Arrow S03",
+  "The Flash S02",
+  "Arrow S04",
+  "Supergirl S01",
+  "Legends of Tomorrow S01",
+  "The Flash S03",
+  "Arrow S05",
+  "Supergirl S02",
+  "Legends of Tomorrow S02",
+  "The Flash S04",
+  "Arrow S06",
+  "Supergirl S03",
+  "Legends of Tomorrow S03",
+  "The Flash S05",
+  "Arrow S07",
+  "Supergirl S04",
+  "Legends of Tomorrow S04",
+  "The Flash S06",
+  "Arrow S08 (Crise nas Infinitas Terras)",
+  "Supergirl S05",
+  "Legends of Tomorrow S05",
+  "The Flash S07",
+  "The Flash S08",
+  "The Flash S09"
+];
+
+const container = document.getElementById('list');
+const saved = JSON.parse(localStorage.getItem('arrowverseProgress') || '{}');
+
+function render() {
+  container.innerHTML = '';
+  let nextFound = false;
+
+  order.forEach((item, index) => {
+    const id = `ep-${index}`;
+
+    const div = document.createElement('div');
+    div.className = 'episode';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = id;
+    checkbox.checked = saved[id] || false;
+
+    checkbox.onchange = () => {
+      saved[id] = checkbox.checked;
+      localStorage.setItem('arrowverseProgress', JSON.stringify(saved));
+      render();
+    };
+
+    const label = document.createElement('label');
+    label.htmlFor = id;
+    label.textContent = item;
+
+    if (!checkbox.checked && !nextFound) {
+      div.classList.add('next');
+      nextFound = true;
+    }
+
+    div.appendChild(checkbox);
+    div.appendChild(label);
+    container.appendChild(div);
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
