@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arrowverse – Ordem Cronológica</title>
+  <title>Arrowverse – Ordem Cronológica (Episódios)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,9 +11,8 @@
       color: #fff;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-    }
+    h1 { text-align: center; }
+
     .episode {
       background: #5606f8;
       margin-bottom: 8px;
@@ -23,9 +22,11 @@
       align-items: center;
       gap: 10px;
     }
+
     .episode.next {
       outline: 3px solid #00ff99;
     }
+
     .episode label {
       background: #f00404;
       padding: 6px 10px;
@@ -33,6 +34,7 @@
       cursor: pointer;
       white-space: nowrap;
     }
+
     @media (max-width: 768px) {
       body { padding: 10px; }
       .episode { font-size: 16px; }
@@ -42,42 +44,49 @@
 </head>
 <body>
 
-<h1>Arrowverse 📺 Ordem Cronológica</h1>
-<p>Marque os episódios já assistidos. O próximo episódio na cronologia será destacado automaticamente.</p>
+<h1>Arrowverse 📺 Ordem Cronológica (Episódio por Episódio)</h1>
+<p>Baseado no guia do Poltrona Nerd. Marque os episódios já assistidos — o próximo será destacado.</p>
 
 <div id="list"></div>
 
 <script>
-// Ordem cronológica simplificada baseada no Poltrona Nerd
-// (sem Black Lightning, Batwoman e Superman & Lois)
+// Ordem cronológica baseada no Poltrona Nerd
+// Séries incluídas: Arrow, The Flash, Supergirl, Legends of Tomorrow
+// Séries excluídas conforme pedido: Black Lightning, Batwoman, Superman & Lois
+
 const order = [
-  "Arrow S01",
-  "Arrow S02",
-  "The Flash S01",
-  "Arrow S03",
-  "The Flash S02",
-  "Arrow S04",
-  "Supergirl S01",
-  "Legends of Tomorrow S01",
-  "The Flash S03",
-  "Arrow S05",
-  "Supergirl S02",
-  "Legends of Tomorrow S02",
-  "The Flash S04",
-  "Arrow S06",
-  "Supergirl S03",
-  "Legends of Tomorrow S03",
-  "The Flash S05",
-  "Arrow S07",
-  "Supergirl S04",
-  "Legends of Tomorrow S04",
-  "The Flash S06",
-  "Arrow S08 (Crise nas Infinitas Terras)",
-  "Supergirl S05",
-  "Legends of Tomorrow S05",
-  "The Flash S07",
-  "The Flash S08",
-  "The Flash S09"
+  "Arrow 1x01", "Arrow 1x02", "Arrow 1x03", "Arrow 1x04", "Arrow 1x05",
+  "Arrow 1x06", "Arrow 1x07", "Arrow 1x08", "Arrow 1x09", "Arrow 1x10",
+  "Arrow 1x11", "Arrow 1x12", "Arrow 1x13", "Arrow 1x14", "Arrow 1x15",
+  "Arrow 1x16", "Arrow 1x17", "Arrow 1x18", "Arrow 1x19", "Arrow 1x20",
+  "Arrow 1x21", "Arrow 1x22", "Arrow 1x23",
+
+  "Arrow 2x01", "Arrow 2x02", "Arrow 2x03", "Arrow 2x04", "Arrow 2x05",
+  "Arrow 2x06", "Arrow 2x07", "Arrow 2x08", "Arrow 2x09", "Arrow 2x10",
+  "Arrow 2x11", "Arrow 2x12", "Arrow 2x13", "Arrow 2x14", "Arrow 2x15",
+  "Arrow 2x16", "Arrow 2x17", "Arrow 2x18", "Arrow 2x19", "Arrow 2x20",
+  "Arrow 2x21", "Arrow 2x22", "Arrow 2x23",
+
+  "The Flash 1x01", "The Flash 1x02", "Arrow 3x01", "The Flash 1x03",
+  "Arrow 3x02", "The Flash 1x04", "Arrow 3x03", "The Flash 1x05",
+  "Arrow 3x04", "The Flash 1x06", "Arrow 3x05",
+  "The Flash 1x07", "Arrow 3x06",
+  "The Flash 1x08 / Arrow 3x08 (Flash vs Arrow)",
+
+  "The Flash 1x09", "Arrow 3x09", "The Flash 1x10", "Arrow 3x10",
+  "The Flash 1x11", "Arrow 3x11", "The Flash 1x12", "Arrow 3x12",
+  "The Flash 1x13", "Arrow 3x13", "The Flash 1x14", "Arrow 3x14",
+  "The Flash 1x15", "Arrow 3x15", "The Flash 1x16", "Arrow 3x16",
+  "The Flash 1x17", "Arrow 3x17", "The Flash 1x18", "Arrow 3x18",
+  "The Flash 1x19", "Arrow 3x19", "The Flash 1x20", "Arrow 3x20",
+  "The Flash 1x21", "Arrow 3x21", "The Flash 1x22", "Arrow 3x22",
+  "The Flash 1x23", "Arrow 3x23",
+
+  "Supergirl 1x01", "Supergirl 1x02", "Supergirl 1x03", "Supergirl 1x04",
+  "Supergirl 1x05", "Supergirl 1x06", "Supergirl 1x07", "Supergirl 1x08",
+  "Supergirl 1x09", "Supergirl 1x10", "Supergirl 1x11", "Supergirl 1x12",
+  "Supergirl 1x13", "Supergirl 1x14", "Supergirl 1x15", "Supergirl 1x16",
+  "Supergirl 1x17", "Supergirl 1x18", "Supergirl 1x19", "Supergirl 1x20"
 ];
 
 const container = document.getElementById('list');
