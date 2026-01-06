@@ -55,38 +55,65 @@
 // Séries excluídas conforme pedido: Black Lightning, Batwoman, Superman & Lois
 
 const order = [
-  "Arrow 1x01", "Arrow 1x02", "Arrow 1x03", "Arrow 1x04", "Arrow 1x05",
-  "Arrow 1x06", "Arrow 1x07", "Arrow 1x08", "Arrow 1x09", "Arrow 1x10",
-  "Arrow 1x11", "Arrow 1x12", "Arrow 1x13", "Arrow 1x14", "Arrow 1x15",
-  "Arrow 1x16", "Arrow 1x17", "Arrow 1x18", "Arrow 1x19", "Arrow 1x20",
-  "Arrow 1x21", "Arrow 1x22", "Arrow 1x23",
+  // ARROW TEMP 1
+  ...Array.from({length:23},(_,i)=>`Arrow 1x${String(i+1).padStart(2,'0')}`),
 
-  "Arrow 2x01", "Arrow 2x02", "Arrow 2x03", "Arrow 2x04", "Arrow 2x05",
-  "Arrow 2x06", "Arrow 2x07", "Arrow 2x08", "Arrow 2x09", "Arrow 2x10",
-  "Arrow 2x11", "Arrow 2x12", "Arrow 2x13", "Arrow 2x14", "Arrow 2x15",
-  "Arrow 2x16", "Arrow 2x17", "Arrow 2x18", "Arrow 2x19", "Arrow 2x20",
-  "Arrow 2x21", "Arrow 2x22", "Arrow 2x23",
+  // ARROW TEMP 2
+  ...Array.from({length:23},(_,i)=>`Arrow 2x${String(i+1).padStart(2,'0')}`),
 
-  "The Flash 1x01", "The Flash 1x02", "Arrow 3x01", "The Flash 1x03",
-  "Arrow 3x02", "The Flash 1x04", "Arrow 3x03", "The Flash 1x05",
-  "Arrow 3x04", "The Flash 1x06", "Arrow 3x05",
-  "The Flash 1x07", "Arrow 3x06",
-  "The Flash 1x08 / Arrow 3x08 (Flash vs Arrow)",
+  // FLASH T1 + ARROW T3
+  "The Flash 1x01","The Flash 1x02",
+  ...Array.from({length:23},(_,i)=>`Arrow 3x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:23},(_,i)=>`The Flash 1x${String(i+1).padStart(2,'0')}`),
 
-  "The Flash 1x09", "Arrow 3x09", "The Flash 1x10", "Arrow 3x10",
-  "The Flash 1x11", "Arrow 3x11", "The Flash 1x12", "Arrow 3x12",
-  "The Flash 1x13", "Arrow 3x13", "The Flash 1x14", "Arrow 3x14",
-  "The Flash 1x15", "Arrow 3x15", "The Flash 1x16", "Arrow 3x16",
-  "The Flash 1x17", "Arrow 3x17", "The Flash 1x18", "Arrow 3x18",
-  "The Flash 1x19", "Arrow 3x19", "The Flash 1x20", "Arrow 3x20",
-  "The Flash 1x21", "Arrow 3x21", "The Flash 1x22", "Arrow 3x22",
-  "The Flash 1x23", "Arrow 3x23",
+  // FLASH T2 + ARROW T4
+  ...Array.from({length:23},(_,i)=>`The Flash 2x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:23},(_,i)=>`Arrow 4x${String(i+1).padStart(2,'0')}`),
 
-  "Supergirl 1x01", "Supergirl 1x02", "Supergirl 1x03", "Supergirl 1x04",
-  "Supergirl 1x05", "Supergirl 1x06", "Supergirl 1x07", "Supergirl 1x08",
-  "Supergirl 1x09", "Supergirl 1x10", "Supergirl 1x11", "Supergirl 1x12",
-  "Supergirl 1x13", "Supergirl 1x14", "Supergirl 1x15", "Supergirl 1x16",
-  "Supergirl 1x17", "Supergirl 1x18", "Supergirl 1x19", "Supergirl 1x20"
+  // SUPERGIRL T1 + LEGENDS T1
+  ...Array.from({length:20},(_,i)=>`Supergirl 1x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:16},(_,i)=>`Legends 1x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T3 + ARROW T5
+  ...Array.from({length:23},(_,i)=>`The Flash 3x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:23},(_,i)=>`Arrow 5x${String(i+1).padStart(2,'0')}`),
+
+  // SUPERGIRL T2 + LEGENDS T2
+  ...Array.from({length:22},(_,i)=>`Supergirl 2x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:17},(_,i)=>`Legends 2x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T4 + ARROW T6
+  ...Array.from({length:23},(_,i)=>`The Flash 4x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:23},(_,i)=>`Arrow 6x${String(i+1).padStart(2,'0')}`),
+
+  // SUPERGIRL T3 + LEGENDS T3
+  ...Array.from({length:23},(_,i)=>`Supergirl 3x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:18},(_,i)=>`Legends 3x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T5 + ARROW T7
+  ...Array.from({length:22},(_,i)=>`The Flash 5x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:22},(_,i)=>`Arrow 7x${String(i+1).padStart(2,'0')}`),
+
+  // SUPERGIRL T4 + LEGENDS T4
+  ...Array.from({length:22},(_,i)=>`Supergirl 4x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:16},(_,i)=>`Legends 4x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T6 + ARROW T8 (CRISE)
+  ...Array.from({length:19},(_,i)=>`The Flash 6x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:10},(_,i)=>`Arrow 8x${String(i+1).padStart(2,'0')}`),
+
+  // SUPERGIRL T5 + LEGENDS T5
+  ...Array.from({length:19},(_,i)=>`Supergirl 5x${String(i+1).padStart(2,'0')}`),
+  ...Array.from({length:15},(_,i)=>`Legends 5x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T7
+  ...Array.from({length:18},(_,i)=>`The Flash 7x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T8
+  ...Array.from({length:20},(_,i)=>`The Flash 8x${String(i+1).padStart(2,'0')}`),
+
+  // FLASH T9
+  ...Array.from({length:13},(_,i)=>`The Flash 9x${String(i+1).padStart(2,'0')}`)
 ];
 
 const container = document.getElementById('list');
