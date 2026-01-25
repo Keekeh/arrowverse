@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arrowverse – Ordem Cronológica (Episódios)</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,7 +12,10 @@
       color: #fff;
       padding: 20px;
     }
-    h1 { text-align: center; }
+
+    h1 {
+      text-align: center;
+    }
 
     .episode {
       background: #5606f8;
@@ -44,58 +48,96 @@
 </head>
 <body>
 
-<h1>Arrowverse 📺 Ordem Cronológica (Episódio por Episódio)</h1>
-<p>Baseado no guia do Poltrona Nerd. Marque os episódios já assistidos — o próximo será destacado.</p>
+<h1>Arrowverse 📺 Ordem Cronológica</h1>
+<p>Baseado no Poltrona Nerd. Marque os episódios já assistidos — o próximo será destacado automaticamente.</p>
 
 <div id="list"></div>
 
 <script>
-// Ordem cronológica baseada no Poltrona Nerd
-// Séries incluídas: Arrow, The Flash, Supergirl, Legends of Tomorrow
-// Séries excluídas conforme pedido: Black Lightning, Batwoman, Superman & Lois
+/* ========= FUNÇÃO DE INTERCALAÇÃO ========= */
+function intercalar(a, b) {
+  const r = [];
+  const max = Math.max(a.length, b.length);
+  for (let i = 0; i < max; i++) {
+    if (a[i]) r.push(a[i]);
+    if (b[i]) r.push(b[i]);
+  }
+  return r;
+}
 
+/* ========= TEMPORADAS ========= */
+// Arrow
+const arrowT1 = Array.from({length:23},(_,i)=>`Arrow 1x${String(i+1).padStart(2,'0')}`);
+const arrowT2 = Array.from({length:23},(_,i)=>`Arrow 2x${String(i+1).padStart(2,'0')}`);
+const arrowT3 = Array.from({length:23},(_,i)=>`Arrow 3x${String(i+1).padStart(2,'0')}`);
+const arrowT4 = Array.from({length:23},(_,i)=>`Arrow 4x${String(i+1).padStart(2,'0')}`);
+const arrowT5 = Array.from({length:23},(_,i)=>`Arrow 5x${String(i+1).padStart(2,'0')}`);
+const arrowT6 = Array.from({length:23},(_,i)=>`Arrow 6x${String(i+1).padStart(2,'0')}`);
+const arrowT7 = Array.from({length:22},(_,i)=>`Arrow 7x${String(i+1).padStart(2,'0')}`);
+const arrowT8 = Array.from({length:10},(_,i)=>`Arrow 8x${String(i+1).padStart(2,'0')}`);
+
+// Flash
+const flashT1 = Array.from({length:23},(_,i)=>`The Flash 1x${String(i+1).padStart(2,'0')}`);
+const flashT2 = Array.from({length:23},(_,i)=>`The Flash 2x${String(i+1).padStart(2,'0')}`);
+const flashT3 = Array.from({length:23},(_,i)=>`The Flash 3x${String(i+1).padStart(2,'0')}`);
+const flashT4 = Array.from({length:23},(_,i)=>`The Flash 4x${String(i+1).padStart(2,'0')}`);
+const flashT5 = Array.from({length:22},(_,i)=>`The Flash 5x${String(i+1).padStart(2,'0')}`);
+const flashT6 = Array.from({length:19},(_,i)=>`The Flash 6x${String(i+1).padStart(2,'0')}`);
+const flashT7 = Array.from({length:18},(_,i)=>`The Flash 7x${String(i+1).padStart(2,'0')}`);
+const flashT8 = Array.from({length:20},(_,i)=>`The Flash 8x${String(i+1).padStart(2,'0')}`);
+const flashT9 = Array.from({length:13},(_,i)=>`The Flash 9x${String(i+1).padStart(2,'0')}`);
+
+// Supergirl
+const supergirlT1 = Array.from({length:20},(_,i)=>`Supergirl 1x${String(i+1).padStart(2,'0')}`);
+const supergirlT2 = Array.from({length:22},(_,i)=>`Supergirl 2x${String(i+1).padStart(2,'0')}`);
+const supergirlT3 = Array.from({length:23},(_,i)=>`Supergirl 3x${String(i+1).padStart(2,'0')}`);
+const supergirlT4 = Array.from({length:22},(_,i)=>`Supergirl 4x${String(i+1).padStart(2,'0')}`);
+const supergirlT5 = Array.from({length:19},(_,i)=>`Supergirl 5x${String(i+1).padStart(2,'0')}`);
+
+// Legends
+const legendsT1 = Array.from({length:16},(_,i)=>`Legends 1x${String(i+1).padStart(2,'0')}`);
+const legendsT2 = Array.from({length:17},(_,i)=>`Legends 2x${String(i+1).padStart(2,'0')}`);
+const legendsT3 = Array.from({length:18},(_,i)=>`Legends 3x${String(i+1).padStart(2,'0')}`);
+const legendsT4 = Array.from({length:16},(_,i)=>`Legends 4x${String(i+1).padStart(2,'0')}`);
+const legendsT5 = Array.from({length:15},(_,i)=>`Legends 5x${String(i+1).padStart(2,'0')}`);
+
+/* ========= ORDEM CRONOLÓGICA ========= */
 const order = [
-  // ARROW TEMP 1
-  ...Array.from({length:23},(_,i)=>`Arrow 1x${String(i+1).padStart(2,'0')}`),
+  ...arrowT1,
+  ...arrowT2,
 
-  // ARROW TEMP 2
-  ...Array.from({length:23},(_,i)=>`Arrow 2x${String(i+1).padStart(2,'0')}`),
-
-  // ARROW T3 + FLASH T1 (INTERCALADO)
   ...intercalar(arrowT3, flashT1),
-
-  // FLASH T2 + ARROW T4
   ...intercalar(flashT2, arrowT4),
 
-  // SUPERGIRL T1
-  ...Array.from({length:20},(_,i)=>`Supergirl 1x${String(i+1).padStart(2,'0')}`),
+  ...supergirlT1,
+  ...legendsT1,
 
-  // LEGENDS T1
-  ...Array.from({length:16},(_,i)=>`Legends 1x${String(i+1).padStart(2,'0')}`),
-
-  // FLASH T3 + ARROW T5
   ...intercalar(flashT3, arrowT5),
 
-  // SUPERGIRL T2
-  ...Array.from({length:22},(_,i)=>`Supergirl 2x${String(i+1).padStart(2,'0')}`),
+  ...supergirlT2,
+  ...legendsT2,
 
-  // LEGENDS T2
-  ...Array.from({length:17},(_,i)=>`Legends 2x${String(i+1).padStart(2,'0')}`),
-
-  // FLASH T4 + ARROW T6
   ...intercalar(flashT4, arrowT6),
 
-  // SUPERGIRL T3
-  ...Array.from({length:23},(_,i)=>`Supergirl 3x${String(i+1).padStart(2,'0')}`),
+  ...supergirlT3,
+  ...legendsT3,
 
-  // LEGENDS T3
-  ...Array.from({length:18},(_,i)=>`Legends 3x${String(i+1).padStart(2,'0')}`),
-
-  // FLASH T5 + ARROW T7
   ...intercalar(flashT5, arrowT7),
 
-  // (restante pode seguir como você já fez)
+  ...supergirlT4,
+  ...legendsT4,
+
+  ...intercalar(flashT6, arrowT8),
+
+  ...supergirlT5,
+  ...legendsT5,
+
+  ...flashT7,
+  ...flashT8,
+  ...flashT9
 ];
+
+/* ========= RENDER ========= */
 const container = document.getElementById('list');
 const saved = JSON.parse(localStorage.getItem('arrowverseProgress') || '{}');
 
@@ -105,7 +147,6 @@ function render() {
 
   order.forEach((item, index) => {
     const id = `ep-${index}`;
-
     const div = document.createElement('div');
     div.className = 'episode';
 
