@@ -230,7 +230,7 @@ const order = [
 "Arrow S05E07",
 "DC’s Legends of Tomorrow S02E06",
 "supergirl S02E07",
-"The Flash S03E7",
+"The Flash S03E07",
 "supergirl S02E08 – Crossover Invasão Parte 1",
 "The Flash S03E08 – Crossover Invasão Parte 2",
 "Arrow S05E08 – Crossover Invasão Parte 3",
@@ -268,7 +268,7 @@ const order = [
 "supergirl S02E16 – Crossover musical parte 1",
 "The Flash S03E17 – Crossover musical parte 2",
 "DC’s Legends of Tomorrow S02E15",
-"Arrow S05E1Z",
+"Arrow S05E17",
 "supergirl S02E17",
 "The Flash S03E18",
 "DC’s Legends of Tomorrow S02E16",
@@ -619,7 +619,6 @@ const order = [
 "The Flash S09E10",
 "The Flash S09E11",
 "The Flash S09E12",
-"The Flash S09E12",
 "The Flash S09E13",
   // 👉 continue manualmente daqui pra frente
 ];
@@ -629,7 +628,7 @@ const container = document.getElementById('list');
 const saved = JSON.parse(localStorage.getItem('arrowverseProgress') || '{}');
 
 function render() {
-  container.innerHTML = ',;
+  container.innerHTML = '';
   let nextFound = false;
 
   order.forEach((item, index) => {
